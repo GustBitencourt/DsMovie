@@ -24,4 +24,12 @@ public class MovieService {
 
         return page;
     }
+
+    @Transactional(readOnly = true)
+    public MovieDto findById(Long id) {
+        Movie result = repository.findById(id).get();
+        MovieDto dto = new MovieDto(result);
+
+        return dto;
+    }
 }
